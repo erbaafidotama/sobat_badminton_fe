@@ -1,6 +1,7 @@
 // import 'package:animated_list_view_scroll/animated_list_view_scroll.dart';
 // import 'package:app_sobat/views/beranda_appbar.dart';
 import 'package:flutter/material.dart';
+// import 'package:app_sobat/utils_preferences.dart';
 
 class BerandaPage extends StatefulWidget {
   @override
@@ -8,6 +9,12 @@ class BerandaPage extends StatefulWidget {
 }
 
 class _BerandaPageState extends State<BerandaPage> {
+  // _getAccessToken() async {
+  //   var accessTok = await Utility.getTokenAccessPreferences();
+  //   print('access_token');
+  //   print(accessTok);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return new SafeArea(

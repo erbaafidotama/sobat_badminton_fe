@@ -1,36 +1,11 @@
 class LoginModel {
-  String message;
-  int status;
-  Values values;
-
-  LoginModel({this.message, this.status, this.values});
-
-  LoginModel.fromJson(Map<String, dynamic> json) {
-    message = json['message'];
-    status = json['status'];
-    values =
-        json['values'] != null ? new Values.fromJson(json['values']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['status'] = this.status;
-    if (this.values != null) {
-      data['values'] = this.values.toJson();
-    }
-    return data;
-  }
-}
-
-class Values {
   Data data;
   String tokenAccess;
   String tokenRefresh;
 
-  Values({this.data, this.tokenAccess, this.tokenRefresh});
+  LoginModel({this.data, this.tokenAccess, this.tokenRefresh});
 
-  Values.fromJson(Map<String, dynamic> json) {
+  LoginModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     tokenAccess = json['token_access'];
     tokenRefresh = json['token_refresh'];

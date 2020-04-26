@@ -1,4 +1,12 @@
+// import 'dart:convert';
+
+import 'package:app_sobat/api/repository/gor_api_repository.dart';
+import 'package:app_sobat/models/gor_model.dart';
+// import 'package:app_sobat/models/gor_model.dart';
+// import 'package:dio/dio.dart';
+// import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+// import 'package:pagination/pagination.dart';
 
 class GorBeranda extends StatefulWidget {
   GorBeranda({Key key}) : super(key: key);
@@ -8,6 +16,14 @@ class GorBeranda extends StatefulWidget {
 }
 
 class _GorBerandaState extends State<GorBeranda> {
+  ApiRepositoryGor _apiRepository = ApiRepositoryGor();
+
+  @override
+  void initState() {
+    // _apiRepository.getDataGorApi;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new SafeArea(
@@ -27,7 +43,7 @@ class _GorBerandaState extends State<GorBeranda> {
                   alignment: Alignment.topLeft,
                   margin: EdgeInsets.only(top: 20.0),
                   child: Text(
-                    "Discussions",
+                    "Gor",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -38,359 +54,80 @@ class _GorBerandaState extends State<GorBeranda> {
                   color: Colors.grey[400],
                 ),
                 Expanded(
-                  child: Container(
-                    // height: MediaQuery.of(context).size.height,
-                    // color: Colors.red,
-                    child: ListView(
-                      children: <Widget>[
-                        Container(
-                          // margin: EdgeInsets.only(top: 10),
-                          height: 200.0,
-                          decoration: new BoxDecoration(
-                              color: Colors.blueAccent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Container(
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  child: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundColor: Colors.transparent,
-                                    child: ClipOval(
-                                      child: Image.asset(
-                                          "assets/images/user5.png"),
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: Container(
-                                    padding: new EdgeInsets.only(
-                                        right: 13.0, left: 5.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Flexible(
-                                          child: Text(
-                                            "Seluruh Turnamen Bergengsi diundur bla blabalabalb ab",
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: Colors.white,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                            softWrap: false,
-                                          ),
-                                        ),
-                                        Text(
-                                          "15/04/2020",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                          textAlign: TextAlign.left,
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Flexible(
-                                          child: Text(
-                                            "Dikarenakan virus corona yang sedang melanda seluruh negeri, seluruh turnamen terpaksa diliburkan untuk sementara",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white),
-                                            overflow: TextOverflow.ellipsis,
-                                            softWrap: false,
-                                            maxLines: 3,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Container(
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                // _lights = true;
-                                                // submitLogin();
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 150,
-                                              height: 50,
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal: 50),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                color: Colors.white,
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  "Open",
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          height: 200.0,
-                          decoration: new BoxDecoration(
-                              color: Colors.greenAccent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Container(
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  child: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundColor: Colors.transparent,
-                                    child: ClipOval(
-                                      child: Image.asset(
-                                          "assets/images/user1.png"),
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: Container(
-                                    padding: new EdgeInsets.only(
-                                        right: 13.0, left: 5.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Flexible(
-                                          child: Text(
-                                            "Gak Main Badminton sangat tidak asik",
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: Colors.white,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                            softWrap: false,
-                                          ),
-                                        ),
-                                        Text(
-                                          "15/04/2020",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                          textAlign: TextAlign.left,
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Flexible(
-                                          child: Text(
-                                            "Udah 3 minggu gak main badminton",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white),
-                                            overflow: TextOverflow.ellipsis,
-                                            softWrap: false,
-                                            maxLines: 3,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Container(
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                // _lights = true;
-                                                // submitLogin();
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 150,
-                                              height: 50,
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal: 50),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                color: Colors.white,
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  "Open",
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          height: 200.0,
-                          decoration: new BoxDecoration(
-                              color: Colors.lightBlue,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: Container(
-                            child: Row(
-                              children: <Widget>[
-                                Container(
-                                  child: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundColor: Colors.transparent,
-                                    child: ClipOval(
-                                      child: Image.asset(
-                                          "assets/images/user2.png"),
-                                    ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: Container(
-                                    padding: new EdgeInsets.only(
-                                        right: 13.0, left: 5.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Flexible(
-                                          child: Text(
-                                            "Seluruh Turnamen Bergengsi diundur bla blabalabalb ab",
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: Colors.white,
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                            softWrap: false,
-                                          ),
-                                        ),
-                                        Text(
-                                          "15/04/2020",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                          textAlign: TextAlign.left,
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Flexible(
-                                          child: Text(
-                                            "Dikarenakan virus corona yang sedang melanda seluruh negeri, seluruh turnamen terpaksa diliburkan untuk sementara",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white),
-                                            overflow: TextOverflow.ellipsis,
-                                            softWrap: false,
-                                            maxLines: 3,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Container(
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                // _lights = true;
-                                                // submitLogin();
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 150,
-                                              height: 50,
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal: 50),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                color: Colors.white,
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  "Open",
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          height: 200.0,
-                          decoration: new BoxDecoration(
-                              color: Colors.pinkAccent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          height: 200.0,
-                          decoration: new BoxDecoration(
-                              color: Colors.blueAccent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 10),
-                          height: 200.0,
-                          decoration: new BoxDecoration(
-                              color: Colors.greenAccent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: FutureBuilder(
+                      future: _apiRepository.getDataGorApi,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<GorModel>> snapshot) {
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.none:
+                            return Container(
+                              child: Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            );
+                            break;
+                          case ConnectionState.waiting:
+                            return Container(
+                              child: Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            );
+                            break;
+                          case ConnectionState.active:
+                            return Container(
+                              child: Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            );
+                            break;
+                          case ConnectionState.done:
+                            if (snapshot.hasError) {
+                              return Container(
+                                child: Text("Something Error!"),
+                              );
+                            } else {
+                              return BuildList(
+                                listData: snapshot.data,
+                              );
+                            }
+                            break;
+                        }
+                        return Container();
+                      }),
                 ),
+                FloatingActionButton.extended(
+                  onPressed: () {},
+                  label: Text("Add"),
+                  icon: Icon(Icons.add),
+                )
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class BuildList extends StatelessWidget {
+  const BuildList({
+    Key key,
+    this.listData,
+  }) : super(key: key);
+
+  final List<GorModel> listData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListView.builder(
+          itemCount: listData.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(listData[index].namaGor),
+              subtitle: Text(listData[index].alamatGor),
+            );
+          }),
     );
   }
 }

@@ -1,13 +1,11 @@
-// import 'package:app_sobat/animation/SlideRight.dart';
-// import 'package:app_sobat/api/api_repository.dart';
+import 'package:app_sobat/api/login_api.dart';
+// import 'package:app_sobat/api/repository/login_api_repository.dart';
 import 'package:app_sobat/fade_animation.dart';
 import 'package:app_sobat/landing_page.dart';
+// import 'package:app_sobat/models/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-// import 'dart:async';
-// import 'dart:convert';
-// import 'package:http/http.dart' as http;
-// import 'dart:developer';
+import 'utils_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,55 +13,31 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // ApiRepository _apiRepository = ApiRepository();
+  // final _storage = FlutterSecureStorage();
+  final formControllerEmail = TextEditingController();
+  final formControllerPassword = TextEditingController();
 
-  submitLogin() {
+  navigatorToLandingPage() {
     Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) {
       return new LandingPage();
     }));
   }
 
-  // final String baseUrl = 'http://127.0.0.1:5000/login';
-  // List data;
-
   // submitLogin() {
-  //   var dataLogin = http.post(
-  //       baseUrl, body: {"email": "monkeybisnis@gmail.com", "password": "098765"})
-  //       .then((response) {
-  //         print("Response body: $response");
-  //       });
+  //   print(formControllerEmail.text);
+  //   print(formControllerPassword.text);
+  //   String email = formControllerEmail.text.toString();
+  //   String password = formControllerPassword.text.toString();
+  //   // Data dataLogin = Data(email: email, password: password);
+  //   _apiLoginRepository.postLoginApi(email, password);
   // }
 
-  // Future<http.Response> submitLogin() async{
-  //   var res = await http.post(
-  //     baseUrl,
-  //     headers: <String, String>{
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //     body: jsonEncode(<String, String>{
-  //       "email": "monkeybisnis@gmail.com",
-  //       "password": "098765"
-  //     }),
-  //   );
-  //   var ddd=jsonDecode(res.body)['status'];
-  //   print("CEK INI: $ddd");
-  //   if (ddd == 200) {
-  //     Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (_) {
-  //       return new LandingPage();
-  //     }));
-  //   }
-  //   // return
-  // }
-
-  // submitLogin() {
-  //   _apiRepository.getDataLoginApi;
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _apiRepository.getDataLoginApi;
-  // }
+  @override
+  void dispose() {
+    formControllerEmail.dispose();
+    formControllerPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,11 +126,13 @@ class _LoginPageState extends State<LoginPage> {
                                 children: <Widget>[
                                   FormBuilderTextField(
                                     attribute: "username",
+                                    controller: formControllerEmail,
                                     decoration:
                                         InputDecoration(labelText: "Username"),
                                   ),
                                   FormBuilderTextField(
                                     attribute: "password",
+                                    controller: formControllerPassword,
                                     decoration:
                                         InputDecoration(labelText: "Password"),
                                   ),
@@ -210,11 +186,18 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: <Widget>[
                               GestureDetector(
-                                onTap: () {
+                                onTap: () async {
                                   setState(() {
                                     // _lights = true;
-                                    submitLogin();
+                                    // submitLogin();
                                   });
+                                  var res = await loginUser(
+                                      formControllerEmail.text.toString(),
+                                      formControllerPassword.text.toString());
+                                  print("HEAHEA");
+                                  print(res['token_access']);
+                                  Utility.saveTokenAccessPreferences(res['token_access']);
+                                  navigatorToLandingPage();
                                 },
                                 child: Container(
                                   width: 300,
@@ -237,21 +220,6 @@ class _LoginPageState extends State<LoginPage> {
                               )
                             ],
                           ),
-                          // height: 50,
-                          // margin: EdgeInsets.symmetric(horizontal: 50),
-                          // decoration: BoxDecoration(
-                          //   borderRadius: BorderRadius.circular(50),
-                          //   color: Colors.blue[900],
-                          // ),
-                          // child: Center(
-                          //   child: Text(
-                          //     "Login",
-                          //     style: TextStyle(
-                          //         color: Colors.white,
-                          //         fontSize: 16,
-                          //         fontWeight: FontWeight.bold),
-                          //   ),
-                          // ),
                         ),
                       ),
                       SizedBox(

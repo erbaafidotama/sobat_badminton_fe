@@ -1,5 +1,5 @@
-import 'package:app_sobat/api/provider/login_api_provider.dart';
-import 'package:app_sobat/models/login_model.dart';
+import 'package:app_sobat/data/provider/login_api_provider.dart';
+import 'package:app_sobat/data/models/login_model.dart';
 import 'package:dio/dio.dart' as http_dio;
 
 class LoginApiRepository {

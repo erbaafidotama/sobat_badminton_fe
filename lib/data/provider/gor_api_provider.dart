@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:app_sobat/models/gor_model.dart';
-import 'package:app_sobat/utils_preferences.dart';
+import 'package:app_sobat/data/models/gor_model.dart';
+import 'package:app_sobat/utils/utils_preferences.dart';
 // import 'package:app_sobat/models/post_model.dart';
 import 'package:dio/dio.dart' as http_dio;
 

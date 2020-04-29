@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:app_sobat/models/login_model.dart';
+import 'package:app_sobat/data/models/login_model.dart';
 import 'package:dio/dio.dart' as http_dio;
 
 class LoginApiProvider {

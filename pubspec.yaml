@@ -42,6 +42,7 @@ dependencies:
   pagination: ^0.1.0
   # Storage
   shared_preferences: ^0.5.7
+  rxdart: 0.22.0
 
 dev_dependencies:
   flutter_test:

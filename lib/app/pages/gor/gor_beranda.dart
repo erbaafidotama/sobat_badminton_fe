@@ -1,7 +1,7 @@
 // import 'dart:convert';
 
-import 'package:app_sobat/api/repository/gor_api_repository.dart';
-import 'package:app_sobat/models/gor_model.dart';
+import 'package:app_sobat/data/repository/gor_api_repository.dart';
+import 'package:app_sobat/data/models/gor_model.dart';
 // import 'package:app_sobat/models/gor_model.dart';
 // import 'package:dio/dio.dart';
 // import 'package:faker/faker.dart';

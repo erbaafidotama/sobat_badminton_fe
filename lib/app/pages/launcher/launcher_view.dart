@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:app_sobat/login.dart';
+import 'package:app_sobat/app/pages/login/login.dart';
 import 'package:flutter/material.dart';
 
 class LauncherView extends StatefulWidget {
